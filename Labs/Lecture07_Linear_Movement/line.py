@@ -52,16 +52,52 @@ def draw_point(p):
 
 def draw_line_basic(p1, p2):
     # fill here
+    x1, y1 = p1
+    x2, y2 = p2
+
+    draw_big_point(p1)
+    draw_big_point(p2)
+
+    a = (y2-y1)/(x2-x1)             #기울기
+    b = y1 - a * x1
+
+    for x in range(x2, x1 + 1, 5):
+        y = a * x + b
+        draw_point((x, y))
     pass
 
 
-def draw_line(p1, p2):
+def draw_line(p1, p2, p3, p4):
     # fill here
+    draw_big_point(p1)
+    draw_big_point(p2)
+    draw_big_point(p3)
+    draw_big_point(p4)
+
+    x1, y1 = p1
+    x2, y2 = p2
+    x3, y3 = p3
+    x4, y4 = p4
+
+    for i in range(0, 100 + 1, 5):
+        t = i / 100
+        x = (1-t)*x1+t*x2
+        y = (1-t)*y1+t*y2
+        draw_point((x, y))
+
+    points = [(-300, 200), (400, 350), (300, -300), (-200, 200)]
+    size = len(points)
+    n = 1
+
+    while True:
+        draw_line(points[n-1], points[n])
+        n = (n+1) % size
     pass
 
 
 prepare_turtle_canvas()
 
 # fill here
+draw_line = [(-300, 200), (400, 350), (300, -300), (-200, 200)]
 
 turtle.done()

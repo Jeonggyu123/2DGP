@@ -11,12 +11,15 @@ class Grass:
 
 
 class Boy:
-
+    image = None
     def __init__(self):
         self.x, self.y = random.randint(100, 700), 90
         self.frame = random.randint(0, 7)
-        self.image = load_image('run_animation.png')
-
+        #self.image = load_image('run_animation.png')
+        if Boy.image == None:   #바로 실행되게끔
+            Boy.image = load_image('run_animation.png')
+        #클래스 변수 : 클래스 자체에 할당되는 변수.
+        #            객체들은 공유하는 동일한 변수를 갖게 됨
 
     def update(self):
         self.frame = (self.frame + 1) % 8
@@ -38,7 +41,7 @@ def handle_events():
 
 open_canvas()
 
-team = [Boy() for i in range(1000)]
+team = [Boy() for i in range(10000)]
 
 
 grass = Grass()
