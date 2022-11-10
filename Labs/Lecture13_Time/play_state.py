@@ -36,6 +36,7 @@ def exit():
 def update():
     for game_object in game_world.all_objects():
         game_object.update()
+    delay(0.01) #렉걸리게(강제적인 프레임 시간 증가)
 
 def draw_world():
     for game_object in game_world.all_objects():
